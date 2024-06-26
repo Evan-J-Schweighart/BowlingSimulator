@@ -4,6 +4,9 @@ var checkVelocity = false
 
 @export var stopThresh = 0.001
 @export var fallThresh = 0.25
+@export var pointVal = 1
+
+@onready var UI = %UI
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,12 +28,14 @@ func _check_score():
 		# if the final rot is different enough from up then add score
 		if abs(final_rot) >= 0.25:
 			print(name, " Fell...")
+			if UI:
+				UI.score_points(pointVal)
 			# Add points to score here
 
 func _on_body_entered(body):
 	#var colliding = get_colliding_bodies()
 	# start checking velocity
 	if body is RigidBody3D:
-		print("hit rigidbody")
+		print("rigidbody: ", body.linear_velocity.length())
 	else:
 		checkVelocity = true

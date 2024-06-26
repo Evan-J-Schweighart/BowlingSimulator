@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://rem7w4waif8o"]
+[gd_scene load_steps=6 format=3 uid="uid://rem7w4waif8o"]
 
 [ext_resource type="PackedScene" uid="uid://cc6elajtsujff" path="res://BowlingSimulator/objects/pin.tscn" id="1_6bu31"]
+[ext_resource type="Script" path="res://BowlingSimulator/scripts/UI.gd" id="2_361st"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ke83q"]
 
@@ -42,3 +43,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24606, 5.85498)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.45657, 0, 0.889687, -0.41535, 0.884337, 0.21315, -0.786783, -0.46685, 0.403762, 0, 2.17879, 4.80848)
+
+[node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_361st")
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 134.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
