@@ -30,4 +30,7 @@ func _check_score():
 func _on_body_entered(body):
 	#var colliding = get_colliding_bodies()
 	# start checking velocity
-	checkVelocity = true
+	if body is RigidBody3D:
+		print("hit rigidbody")
+	else:
+		checkVelocity = true
