@@ -30,12 +30,15 @@ shape = SubResource("BoxShape3D_2abr3")
 
 [node name="Pin3" parent="World" instance=ExtResource("1_6bu31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0)
+stopThresh = null
 
 [node name="Pin4" parent="World" instance=ExtResource("1_6bu31")]
 transform = Transform3D(1, 0, 0, 0, 0.898112, 0.439767, 0, -0.439767, 0.898112, 0.805679, 3.37396, 0)
+stopThresh = null
 
 [node name="Pin5" parent="World" instance=ExtResource("1_6bu31")]
 transform = Transform3D(0.795245, 0.374333, -0.476929, -0.42589, 0.904775, 0, 0.431513, 0.203119, 0.878942, -0.655667, 3, 0)
+stopThresh = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24606, 5.85498)
