@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://rem7w4waif8o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ke83q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqs3p"]
+diffuse_mode = 3
+albedo_color = Color(0.329158, 0.329158, 0.329158, 1)
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2abr3"]
+
+[node name="TestScenePhysicsObjects" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="World"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Floor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_ke83q")
+surface_material_override/0 = SubResource("StandardMaterial3D_tqs3p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Floor/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Floor/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_2abr3")
