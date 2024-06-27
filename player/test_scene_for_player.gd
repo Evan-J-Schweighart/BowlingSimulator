@@ -7,6 +7,7 @@ func _ready():
 	var tmp = load("res://player/rollcat.tscn")
 	player = tmp.instantiate()
 	add_child(player)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
