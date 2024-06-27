@@ -25,3 +25,10 @@ func pauseToggle():
 	if not get_tree().paused: anim.play("PauseTransition")
 	else: anim.play_backwards("PauseTransition")
 	get_tree().paused = !get_tree().paused
+
+
+func _on_resume_pressed():
+	pauseToggle()
+
+func _on_quit_pressed():
+	get_tree().quit()

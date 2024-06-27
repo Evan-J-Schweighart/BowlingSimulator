@@ -292,13 +292,13 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="PanelLeft/MarginContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="PanelLeft/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_hfvjw")
 theme_override_font_sizes/font_size = 24
 text = "RESUME"
 
-[node name="Button2" type="Button" parent="PanelLeft/MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="PanelLeft/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_hfvjw")
 theme_override_font_sizes/font_size = 24
@@ -352,3 +352,6 @@ theme_override_font_sizes/font_size = 36
 text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="PanelLeft/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelLeft/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
