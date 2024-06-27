@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 @onready var scoreLabel = $Score
+@onready var anim = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,4 +22,6 @@ func score_points(points):
 	scoreLabel.text = str(curScore + points)
 	
 func pauseToggle():
+	if not get_tree().paused: anim.play("PauseTransition")
+	else: anim.play_backwards("PauseTransition")
 	get_tree().paused = !get_tree().paused
