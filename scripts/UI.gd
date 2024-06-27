@@ -7,11 +7,18 @@ extends CanvasLayer
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	tempPauseControl()
+
+func tempPauseControl():
+	if Input.is_action_just_pressed("pause"):
+		print("Toggle pause")
+		pauseToggle()
 
 func score_points(points):
 	var curScore = int(scoreLabel.text)
 	scoreLabel.text = str(curScore + points)
+	
+func pauseToggle():
+	get_tree().paused = !get_tree().paused
