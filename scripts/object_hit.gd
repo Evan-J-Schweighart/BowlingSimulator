@@ -39,8 +39,15 @@ func _on_body_entered(body):
 	#var colliding = get_colliding_bodies()
 	# start checking velocity
 	var colSpeed = linear_velocity.length()
+	# if the object is moving fast and collides break
 	if colSpeed >= breakVelocity:
 		UI.score_points(pointVal)
 		queue_free()
+	elif body is RigidBody3D:
+		# if the object that hits it is moving fast then also break
+		var bodySpeed = body.linear_velocity.length()
+		if bodySpeed >= breakVelocity:
+			UI.score_points(pointVal)
+			queue_free()
 	else:
 		checkVelocity = true
