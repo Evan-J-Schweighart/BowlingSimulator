@@ -8,11 +8,14 @@ var curRound = 0
 var turnPoints = 0
 var totPoints = 0
 
+var inRoundEnd = false
+
 var rounds
 
 @onready var scoreLabel = $Score
 @onready var anim = $AnimationPlayer
 @onready var scoreCard = $PanelMid/ScoreCard/PanelContainer/HBoxContainer
+@onready var endRoundUI = $EndRoundUI
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,8 +45,13 @@ func pauseToggle():
 	get_tree().paused = !get_tree().paused
 	
 func roundEnd():
-	# get turn 1 or 2
-	pass
+	# Duplicate the score card and show it
+	print("Should show score mid")
+	var scoreCopy = scoreCard.duplicate()
+	endRoundUI.add_child(scoreCopy)
+	anim.play("EndRound")
+	inRoundEnd = true
+	# look for button press to get out?
 	
 func turnEnd():
 	# If out of turns end game?
@@ -64,16 +72,19 @@ func turnEnd():
 		curTurn = 0
 		curRound += 1
 		scoreTotalBox.text = str(totPoints)
+		roundEnd()
 		
 	totPoints += turnPoints
 	turnPoints = 0
-		
-	print("new Turn: ", curTurn)
-	print("new Round: ", curRound)
-
+	scoreLabel.text = str(turnPoints)
 
 func _on_resume_pressed():
 	pauseToggle()
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+### CONTINUE AFTER ROUND
+func _on_button_pressed():
+	anim.play_backwards("EndRound")
+	print('DELAY?')
