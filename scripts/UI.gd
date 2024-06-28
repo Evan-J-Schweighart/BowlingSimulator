@@ -44,6 +44,9 @@ func score_points(points):
 	scoreLabel.text = str(turnPoints)
 	
 func pauseToggle():
+	# Cant pause when the round is over aleardy
+	if inRoundEnd: return
+	# Pause game and move in/out the menu
 	if not get_tree().paused: anim.play("PauseTransition")
 	else: anim.play_backwards("PauseTransition")
 	get_tree().paused = !get_tree().paused
