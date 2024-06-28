@@ -14,48 +14,39 @@ var last_collider:Object
 var collision_capsule:CollisionShape3D
 
 var cSpeed:float
-var cDir:float
+var velocity2D:Vector2
+
 var isInAir:bool
 var bounceCounter:int = 0
-
 var spherePivot:Node3D
-
+var cameraRot:Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	floor_stop_on_slope=false
 	velocity = Vector3(INITIAL_SPEED, 0, 0)
 	cSpeed = INITIAL_SPEED
-	cDir = 0
+
 	isInAir = true
 	spherePivot = get_node("Pivot/sphere2")
+	cameraRot = get_node("Node3D")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	var cameraRot:Node3D = get_node("Node3D")
-	cameraRot.look_at(to_global(Vector3(velocity.normalized().x, 0, velocity.normalized().z).rotated(transform.basis.y,deg_to_rad(90))))
+	cameraRot.look_at(to_global(Vector3(velocity.x, 0, velocity.z).normalized().rotated(transform.basis.y.normalized(),deg_to_rad(0))))
 	spherePivot.rotate(velocity.normalized().rotated(Vector3.DOWN,deg_to_rad(90)),-.6*cSpeed*delta)
 	
 	if Input.is_action_pressed("right"):
-		cDir += DIRECTION_ACCEL_BASE * delta
-		#get_node("Pivot").rotate_x(cSpeed*delta)
+		#cDirVec = cDirVec + cameraRot.transform.basis.z
+		#cDir += DIRECTION_ACCEL_BASE * delta
+		velocity = velocity - Vector3(velocity.z, 0, -1 * velocity.x) * delta
 
 	elif Input.is_action_pressed("left"):
-		cDir -= DIRECTION_ACCEL_BASE * delta
-		#get_node("Pivot").rotate_x(-1*cSpeed*delta)
-	cDir = clamp(cDir, -1, 1)
+		velocity = velocity + Vector3(velocity.z, 0, -1 * velocity.x) * delta
+
+
 func _physics_process(delta):
 	cSpeed = cSpeed - (FRICTION_ACCEL_BASE*delta)
-	#print(velocity)
-	#print(cSpeed)
-	var normHoriz = Vector2(1, cDir).normalized()
-	var cnode:Node3D = get_node("Node3D")
 	
 	
-	#var rotTo = look_at()
-	#rotate_object_local(Vector3(0,1,0), rot_x)
-	
-	#cnode.rotate_object_local(Vector3(1,0,0), rotTo)
-
 	#cnode.rotation = Vector3(normHoriz.x, 0, normHoriz.y).rotated(self.transform.basis.get_euler(),180)
 	if cSpeed < 10 and !isInAir:
 		velocity = Vector3(0,0,0)
@@ -65,13 +56,7 @@ func _physics_process(delta):
 			tmp = velocity.y + (VERTICAL_ACCELERATION_BASE*delta)
 		else:
 			tmp = 0# VERTICAL_ACCELERATION_BASE*delta
-			
 
-		print(velocity)
-		velocity = Vector3(normHoriz.x * cSpeed, tmp, normHoriz.y *cSpeed)
-		
-
-		
 		#print(norm)
 		var curr_collision = move_and_collide(velocity*delta)
 		if curr_collision:

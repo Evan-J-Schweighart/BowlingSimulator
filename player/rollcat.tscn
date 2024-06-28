@@ -32,5 +32,8 @@ mesh = SubResource("PlaceholderMesh_tynht")
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(0.984414, 0, 0.175865, 0, 1, 0, -0.175865, 0, 0.984414, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(4.98268, 0.404338, 0.0969422, -0.404338, 4.44004, 2.26331, 0.0969425, -2.26331, 4.45736, 0, 7.58908, 13)
+[node name="SpringArm3D" type="SpringArm3D" parent="Node3D"]
+transform = Transform3D(0.999999, 0, -2.98023e-08, 0, 0.999999, 0, 2.98023e-08, 0, 0.999999, -2.82561, 7.33158, 12.5334)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/SpringArm3D"]
+transform = Transform3D(5, 1.49012e-08, -5.96046e-08, 0, 4.86185, 1.16723, 0, -1.16723, 4.86185, -1.19209e-06, 8, 15)
