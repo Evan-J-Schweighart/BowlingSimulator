@@ -84,7 +84,10 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 
-### CONTINUE AFTER ROUND
+### CONTINUE AFTER ROUND ###
 func _on_button_pressed():
 	anim.play_backwards("EndRound")
-	print('DELAY?')
+	inRoundEnd = false
+	
+	# loading ui data
+	
