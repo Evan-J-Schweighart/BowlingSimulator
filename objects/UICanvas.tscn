@@ -360,30 +360,35 @@ offset_right = 682.0
 offset_bottom = 317.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nr5ss")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelMid"]
-layout_mode = 0
-offset_left = -325.0
-offset_top = 151.0
-offset_right = 677.0
-offset_bottom = 311.0
+[node name="ScoreCard" type="MarginContainer" parent="PanelMid"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.286
+anchor_top = 0.184
+anchor_right = 19.343
+anchor_bottom = 0.378
+offset_left = 0.0105896
+offset_top = -0.248016
+offset_right = -0.00616455
+offset_bottom = 0.283997
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelMid/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelMid/ScoreCard"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="Round0" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="Round1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round0"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -391,22 +396,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round0/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round1/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round0/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round1/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round1/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round1/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round1"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round2"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -414,22 +457,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round2/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round2/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round2/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round2/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round2/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round3" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round2/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round3" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round3"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -437,22 +518,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round3/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round3/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round3/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round3/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round3/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round4" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round3/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round3"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round4" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round4"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -460,22 +579,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round4/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round4/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round4/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round4/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round4/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round5" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round4/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round4"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round5" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round5"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round5"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -483,22 +640,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round5/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round5/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round5/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round5/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round5/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round6" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round5/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round5"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round6" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round6"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round6"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -506,22 +701,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round6/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round6/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round6/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round6/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round6/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round7" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round6/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round6"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round7" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round7"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round7"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -529,22 +762,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round7/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round7/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round7/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round7/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round7/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round8" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round7/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round7"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round8" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round8"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round8"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -552,22 +823,60 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round8/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round8/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round8/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round8/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round8/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Round9" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round8/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round8"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round9" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
 
-[node name="TurnScores" type="HBoxContainer" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round9"]
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round9"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -575,15 +884,114 @@ offset_left = 8.0
 offset_bottom = 59.0
 grow_horizontal = 2
 
-[node name="Turn" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round9/TurnScores"]
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round9/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
 
-[node name="Turn2" type="Panel" parent="PanelMid/MarginContainer/PanelContainer/HBoxContainer/Round9/TurnScores"]
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round9/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round9/TurnScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
+
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round9/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round9"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Round10" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mc5m8")
+
+[node name="TurnScores" type="HBoxContainer" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_bottom = 59.0
+grow_horizontal = 2
+
+[node name="Turn1" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round10/TurnScores"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
+
+[node name="TurnScore1" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round10/TurnScores/Turn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turn2" type="Panel" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round10/TurnScores"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0m3nx")
+
+[node name="TurnScore2" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round10/TurnScores/Turn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTotal" type="Label" parent="PanelMid/ScoreCard/PanelContainer/HBoxContainer/Round10"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Label" type="Label" parent="PanelMid"]
 layout_mode = 0
