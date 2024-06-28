@@ -8,6 +8,9 @@ var curRound = 0
 var turnPoints = 0
 var totPoints = 0
 
+var turnScoreList = []
+var roundScoreList = []
+
 var inRoundEnd = false
 
 var rounds
@@ -20,13 +23,14 @@ var rounds
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rounds = scoreCard.get_children()
+	check_reloaded()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	tempPauseControl()
 	
 	if Input.is_action_just_pressed("TestTurnEnd"):
-		turnEnd()
+		turn_end()
 
 func tempPauseControl():
 	if Input.is_action_just_pressed("pause"):
@@ -44,16 +48,29 @@ func pauseToggle():
 	else: anim.play_backwards("PauseTransition")
 	get_tree().paused = !get_tree().paused
 	
-func roundEnd():
+func round_end():
 	# Duplicate the score card and show it
+	roundScoreList.append(totPoints)
 	print("Should show score mid")
 	var scoreCopy = scoreCard.duplicate()
 	endRoundUI.add_child(scoreCopy)
 	anim.play("EndRound")
 	inRoundEnd = true
+	get_tree().paused = true
 	# look for button press to get out?
 	
-func turnEnd():
+func fill_scores():
+	for i in range(len(roundScoreList)):
+		# Fill the score for each turn
+		for j in range(2):
+			var curTurnScore = rounds[i].get_child(0).get_child(j).get_child(0)
+			if i+j < len(turnScoreList):
+				curTurnScore.text = str(turnScoreList[i+j])
+		# Fill the score for each round
+		var roundScoreLabel = rounds[i].get_child(1)
+		roundScoreLabel.text = str(roundScoreList[i])
+	
+func turn_end():
 	# If out of turns end game?
 	if curRound > 9:
 		return
@@ -72,9 +89,10 @@ func turnEnd():
 		curTurn = 0
 		curRound += 1
 		scoreTotalBox.text = str(totPoints)
-		roundEnd()
+		round_end()
 		
 	totPoints += turnPoints
+	turnScoreList.append(turnPoints)
 	turnPoints = 0
 	scoreLabel.text = str(turnPoints)
 
@@ -88,6 +106,24 @@ func _on_quit_pressed():
 func _on_button_pressed():
 	anim.play_backwards("EndRound")
 	inRoundEnd = false
+	await get_tree().create_timer(0.1).timeout
 	
 	# loading ui data
+	print("save scorecard info...")
+	Reloading.uiData["turnScores"] = turnScoreList
+	Reloading.uiData["roundScores"] = roundScoreList
+	# reload the scene
+	get_tree().reload_current_scene()
 	
+func check_reloaded():
+	print(Reloading.uiData.keys())
+	# get the scores for the score card
+	if "turnScores" in Reloading.uiData.keys():
+		turnScoreList = Reloading.uiData["turnScores"]
+		roundScoreList = Reloading.uiData["roundScores"]
+		# Get back our current running total
+		totPoints = roundScoreList[-1]
+		curRound = len(roundScoreList)
+		# Fill in the scores that got cleared
+		fill_scores()
+		get_tree().paused = false
