@@ -37,15 +37,17 @@ mesh = SubResource("PlaceholderMesh_tynht")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Pivot/sphere"]
 transform = Transform3D(-1.5485e-08, -0.918781, 0, 0.354256, -4.01612e-08, 0, 0, 0, 0.900864, -3.30295, 0, 1.81047)
+visible = false
 mesh = SubResource("TubeTrailMesh_11w32")
 gravity = Vector3(0, 0, 0)
 color = Color(0, 0, 0, 1)
 
 [node name="CPUParticles3D2" type="CPUParticles3D" parent="Pivot/sphere"]
 transform = Transform3D(-1.5485e-08, -0.918781, 0, 0.354256, -4.01612e-08, 0, 0, 0, 0.900864, -3.30295, 0, -1.85451)
+visible = false
 mesh = SubResource("TubeTrailMesh_11w32")
 gravity = Vector3(0, 0, 0)
 color = Color(0, 0, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.667355, 1.40442, -4.75208, -0.195312, 4.79871, 1.39077, 4.95141, 2.63329e-07, 0.695348, -28.6589, 26.4405, 0.381522)
+transform = Transform3D(0.667355, 1.40442, -4.75208, -0.195312, 4.79871, 1.39077, 4.95141, 2.63329e-07, 0.695348, -9.45271, 2.90206, 0.381522)

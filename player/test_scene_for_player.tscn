@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b08x587vdymsa"]
+[gd_scene load_steps=8 format=3 uid="uid://b08x587vdymsa"]
 
 [ext_resource type="Script" path="res://scenes/test_scene_for_physics.gd" id="1_vggb6"]
+[ext_resource type="Texture2D" uid="uid://bpn3f4m13oakn" path="res://sprites/icon.svg" id="2_0urnr"]
 
 [sub_resource type="Environment" id="Environment_t7lgi"]
 
@@ -9,8 +10,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_ke83q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqs3p"]
-diffuse_mode = 3
 albedo_color = Color(0.580392, 0.329412, 0.329412, 1)
+albedo_texture = ExtResource("2_0urnr")
+metallic = 0.66
 roughness = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2abr3"]
@@ -31,12 +33,13 @@ omni_range = 2109.15
 transform = Transform3D(1038.69, 0, 0, 0, 2.8846, 0, 0, 0, 2858.18, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/Floor"]
-transform = Transform3D(1.87175, 1.86265e-09, -4.08846e-11, 1.80881e-05, 9.53674e-07, 1.41422, 0, -1.41422, -6.18174e-08, 0.0177894, -4.08909e-09, 0)
+transform = Transform3D(1.68331, 3.92945e-09, -3.67686e-11, 1.62671e-05, 2.01188e-06, 1.27184, 0, -2.98344, -5.5594e-08, 0.0177894, -4.08909e-09, 0)
 mesh = SubResource("BoxMesh_ke83q")
 surface_material_override/0 = SubResource("StandardMaterial3D_tqs3p")
 
 [node name="floor" type="StaticBody3D" parent="WorldEnvironment/Floor/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 1.42109e-14, 1, -1.07381e-05, -0.000217065, -22.3595)
+transform = Transform3D(1, 0, -1.30698e-19, 0, 1, 0, 0, -5.68434e-14, 1, -1.07381e-05, -0.000217065, -22.3595)
+metadata/bouncesUs = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Floor/MeshInstance3D/floor"]
 transform = Transform3D(1, -1.58325e-08, -3.00133e-11, 1.39698e-09, 0.999999, 0, 0.0001367, -3.8147e-06, 1, 0.0118226, -0.000266159, 23.3487)
