@@ -1,19 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqjcdt21uxb8y"]
+[gd_scene load_steps=5 format=3 uid="uid://cqjcdt21uxb8y"]
 
 [ext_resource type="Script" path="res://player/rollcat.gd" id="1_ptjxm"]
-[ext_resource type="PackedScene" uid="uid://blx5urgpwema0" path="res://player/sphere.glb" id="2_7wtix"]
+[ext_resource type="PackedScene" uid="uid://bwyu5ah8ve18d" path="res://player/sphere2.glb" id="2_xy67k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gv1wk"]
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_tynht"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfpwf"]
-albedo_color = Color(1, 0.0666667, 1, 1)
-
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_11w32"]
-material = SubResource("StandardMaterial3D_wfpwf")
-radius = 0.1
-cap_bottom = false
 
 [node name="rollcat" type="CharacterBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -33,21 +25,12 @@ mesh = SubResource("PlaceholderMesh_tynht")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="sphere" parent="Pivot" instance=ExtResource("2_7wtix")]
+[node name="sphere2" parent="Pivot" instance=ExtResource("2_xy67k")]
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Pivot/sphere"]
-transform = Transform3D(-1.5485e-08, -0.918781, 0, 0.354256, -4.01612e-08, 0, 0, 0, 0.900864, -3.30295, 0, 1.81047)
-visible = false
-mesh = SubResource("TubeTrailMesh_11w32")
-gravity = Vector3(0, 0, 0)
-color = Color(0, 0, 0, 1)
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
 
-[node name="CPUParticles3D2" type="CPUParticles3D" parent="Pivot/sphere"]
-transform = Transform3D(-1.5485e-08, -0.918781, 0, 0.354256, -4.01612e-08, 0, 0, 0, 0.900864, -3.30295, 0, -1.85451)
-visible = false
-mesh = SubResource("TubeTrailMesh_11w32")
-gravity = Vector3(0, 0, 0)
-color = Color(0, 0, 0, 1)
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.984414, 0, 0.175865, 0, 1, 0, -0.175865, 0, 0.984414, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.667355, 1.40442, -4.75208, -0.195312, 4.79871, 1.39077, 4.95141, 2.63329e-07, 0.695348, -9.45271, 2.90206, 0.381522)
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(4.98268, 0.404338, 0.0969422, -0.404338, 4.44004, 2.26331, 0.0969425, -2.26331, 4.45736, 0, 7.58908, 13)

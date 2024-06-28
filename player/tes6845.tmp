@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b08x587vdymsa"]
 
 [ext_resource type="Script" path="res://scenes/test_scene_for_physics.gd" id="1_vggb6"]
-[ext_resource type="Texture2D" uid="uid://bsb2cnxhy6g4m" path="res://player/5gum.jpg" id="2_m1p15"]
+[ext_resource type="Texture2D" uid="uid://cil7qsm33wq2q" path="res://player/Screenshot_20230204_054925.png" id="2_n8oqk"]
 
 [sub_resource type="Environment" id="Environment_t7lgi"]
 
@@ -11,7 +11,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqs3p"]
 albedo_color = Color(0.914061, 0.855717, 0.878532, 1)
-albedo_texture = ExtResource("2_m1p15")
+albedo_texture = ExtResource("2_n8oqk")
 roughness = 0.0
 texture_filter = 1
 
@@ -30,10 +30,10 @@ visible = false
 omni_range = 2109.15
 
 [node name="Floor" type="Node3D" parent="WorldEnvironment"]
-transform = Transform3D(73.247, 0, 0, 0, 2.55831, 0, 0, 0, 83.3173, 0, 0, 0)
+transform = Transform3D(630.194, 0, 0, 0, 2.55831, 0, 0, 0, 524.047, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/Floor"]
-transform = Transform3D(5.23802, 4.9914e-09, -3.15406e-11, 5.0619e-05, 2.5556e-06, 1.09101, 0, -3.78973, -4.76893e-08, 0.0177894, -4.08909e-09, 0)
+transform = Transform3D(22.541, 2.3058e-08, -3.51042e-11, 0.000217831, 1.18057e-05, 1.21427, 0, -17.5068, -5.30776e-08, 0.0177894, -4.08909e-09, 0)
 mesh = SubResource("BoxMesh_ke83q")
 surface_material_override/0 = SubResource("StandardMaterial3D_tqs3p")
 
