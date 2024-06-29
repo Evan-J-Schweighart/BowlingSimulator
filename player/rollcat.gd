@@ -6,8 +6,8 @@ const NUMBOUNCES:int = 2
 const BOUNCESCALES = Vector2(0.5, 0.2)
 const JUMPVELOCITY:float = 100
 
-const FRICTION_ACCEL_BASE:float = 2
-const INITIAL_SPEED:float = 50
+const FRICTION_ACCEL_BASE:float = 1
+const INITIAL_SPEED:float = 100
 
 
 const SPHERE_MESH_ROTATION_CONST = 0.15
@@ -29,6 +29,7 @@ var cameraHelper:Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	floor_stop_on_slope=false
+	#floor
 	velocity = Vector3(0, 0, -1*INITIAL_SPEED)
 	cSpeed = INITIAL_SPEED
 	
@@ -41,8 +42,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta):
-	var c = Vector3(velocity.x, 0, velocity.z).normalized()
-	
 	cameraRot.set_transform(cameraRot.transform.interpolate_with(cameraHelper.transform, 2.5*delta))
 	spherePivot.rotate(velocity.normalized().rotated(Vector3.DOWN,deg_to_rad(90)),-1*SPHERE_MESH_ROTATION_CONST*cSpeed*delta)
 	
@@ -63,32 +62,37 @@ func _physics_process(delta):
 		velocity.y = JUMPVELOCITY
 		bounceCounter = 0
 		isInAir=true
-
 	
+	print(isInAir, velocity.y)
 	cSpeed = clamp(cSpeed - (FRICTION_ACCEL_BASE*delta), 0, INITIAL_SPEED)
-	
 	var tmp:float
 	if isInAir:
 		tmp = velocity.y + (VERTICAL_ACCELERATION_BASE*delta)
 	else:
-		tmp = 0 #VERTICAL_ACCELERATION_BASE
+		velocity.y = 0
+
+		
 	velocity2D = Vector2(velocity.x,velocity.z).normalized()*cSpeed
 	velocity = Vector3(velocity2D.x, tmp, velocity2D.y)
-
+	
 	var curr_collision = move_and_collide(velocity*delta)
+	
 	
 	if curr_collision:
 		var curr_collider:CollisionObject3D = curr_collision.get_collider()
 		var metaData = curr_collider.get_meta("bouncesUs")
-		if isInAir and bounceCounter < NUMBOUNCES:
-			tmp = JUMPVELOCITY * BOUNCESCALES[bounceCounter]
-			bounceCounter = bounceCounter + 1
-			#print(bounceCounter)
-		elif bounceCounter == NUMBOUNCES:
-			isInAir = false
-			tmp=0
-			bounceCounter = 0
-		velocity.y = tmp
+	
+		if metaData:
+			velocity = velocity.bounce(curr_collision.get_normal())
+			if isInAir and bounceCounter < NUMBOUNCES:
+				#
+				bounceCounter = bounceCounter + 1
+				#print(bounceCounter)
+			elif bounceCounter == NUMBOUNCES:
+				isInAir = false
+				velocity = velocity.slide(curr_collision.get_normal())
+				bounceCounter = 0
+
 	#velocity = Vector3(velocity2D.x, tmp, velocity2D.y)	
 	#print(velocity)
 	
