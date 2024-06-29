@@ -2,20 +2,15 @@ class_name rollcat
 extends CharacterBody3D
 
 const VERTICAL_ACCELERATION_BASE:float =  -150
-
 const JUMPVELOCITY:float = 100
-
 const FRICTION_ACCEL_BASE:float = 0
 const INITIAL_SPEED:float = 50
 
 const FLOOR_BOUNCE_MAX:int = 2
-const BOUNCESCALES = Vector2(0.5, 0.1)
-
 const BOUNCE_TIMEOUT_SECONDS:float = 0.5
 
 const SPHERE_MESH_ROTATION_CONST = 0.15
 
-var curr_acceleration_horiz:Vector3
 var last_collider:Object
 var collision_capsule:CollisionShape3D
 
@@ -61,12 +56,7 @@ func _process(delta):
 	
 
 func _physics_process(delta):
-	#print(velocity)
-
 	var curr_collision = move_and_collide(velocity*delta)
-	
-
-
 	isInAir = !raycastDown.is_colliding()
 	
 	
@@ -94,21 +84,21 @@ func _physics_process(delta):
 			if !isInAir and bounceCounter >= FLOOR_BOUNCE_MAX and hitFloor:
 				bounceCounter=0
 				velocity.y = 0
-			#	print("here")
 				canBounce = false
 				bounceTimer.start()
-				print("a, velocity = ", velocity, ", isInAir = ", isInAir, ", collision normal: ", abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))))
+			#	print("a, velocity = ", velocity, ", isInAir = ", isInAir, ", collision normal: ", abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))))
 			else: 
 				if abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))) < 10: #bounce on floor
 					bounceCounter = bounceCounter + 1
-					velocity.y = velocity.y*.5
+					velocity.y = clamp(velocity.y*.5,0, JUMPVELOCITY*2/3)
 					canBounce = false
 					bounceTimer.start()
-					print("b, velocity = ", velocity, ", isInAir = ", isInAir, ", collision normal: ", abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))))
+					#print("b, velocity = ", velocity, ", isInAir = ", isInAir, ", collision normal: ", abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))))
 				elif last_collider != curr_collision.get_collider(): #bounce on wall
 					canBounce = false
 					bounceTimer.start()
-					print("c, velocity = ", velocity, ", isInAir = ", isInAir, ", collision normal: ", abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))))
+					velocity.y=0
+				#	print("c, velocity = ", velocity, ", isInAir = ", isInAir, ", collision normal: ", abs(rad_to_deg(curr_collision.get_normal().angle_to(Vector3.UP))))
 			last_collider = curr_collision.get_collider()
 	else:
 		var cRight = Vector3(velocity.z, 0, -1 * velocity.x)
@@ -123,7 +113,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("jump") and !isInAir:
 			velocity.y = JUMPVELOCITY
 			bounceCounter = 0
-			#isInAir = true
+
 	
 
 	cSpeed = clamp(cSpeed - (FRICTION_ACCEL_BASE*delta), 0, INITIAL_SPEED)
