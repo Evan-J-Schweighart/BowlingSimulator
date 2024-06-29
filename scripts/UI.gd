@@ -55,6 +55,7 @@ func pauseToggle():
 func round_end():
 	# If at the max rounds end game?
 	if curRound == 10:
+		#get_tree().change_scene_to_file("res://BowlingSimulator/scenes/GameEnd.tscn")
 		print("GameOver")
 	
 	# Duplicate the score card and show it
@@ -112,6 +113,11 @@ func _on_quit_pressed():
 
 ### CONTINUE AFTER ROUND ###
 func _on_button_pressed():
+	if curRound == 10:
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://BowlingSimulator/scenes/GameEnd.tscn")
+		return
+	
 	anim.play_backwards("EndRound")
 	inRoundEnd = false
 	await get_tree().create_timer(0.1).timeout
