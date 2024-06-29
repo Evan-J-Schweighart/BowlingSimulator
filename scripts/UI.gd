@@ -46,21 +46,26 @@ func score_points(points):
 func pauseToggle():
 	# Cant pause when the round is over aleardy
 	if inRoundEnd: return
+	
 	# Pause game and move in/out the menu
 	if not get_tree().paused: anim.play("PauseTransition")
 	else: anim.play_backwards("PauseTransition")
 	get_tree().paused = !get_tree().paused
 	
 func round_end():
+	# If at the max rounds end game?
+	if curRound == 10:
+		print("GameOver")
+	
 	# Duplicate the score card and show it
 	roundScoreList.append(totPoints)
-	print("Should show score mid")
 	var scoreCopy = scoreCard.duplicate()
 	endRoundUI.add_child(scoreCopy)
+	
+	# Play animation
 	anim.play("EndRound")
 	inRoundEnd = true
 	get_tree().paused = true
-	# look for button press to get out?
 	
 func fill_scores():
 	for i in range(len(roundScoreList)):
@@ -112,21 +117,21 @@ func _on_button_pressed():
 	await get_tree().create_timer(0.1).timeout
 	
 	# loading ui data
-	print("save scorecard info...")
 	Reloading.uiData["turnScores"] = turnScoreList
 	Reloading.uiData["roundScores"] = roundScoreList
 	# reload the scene
 	get_tree().reload_current_scene()
 	
 func check_reloaded():
-	print(Reloading.uiData.keys())
 	# get the scores for the score card
 	if "turnScores" in Reloading.uiData.keys():
 		turnScoreList = Reloading.uiData["turnScores"]
 		roundScoreList = Reloading.uiData["roundScores"]
+		
 		# Get back our current running total
 		totPoints = roundScoreList[-1]
 		curRound = len(roundScoreList)
+		
 		# Fill in the scores that got cleared
 		fill_scores()
 		get_tree().paused = false
