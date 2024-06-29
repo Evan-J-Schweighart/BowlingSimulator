@@ -1,7 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbhcadkgnbcts"]
+[gd_scene load_steps=16 format=3 uid="uid://dbhcadkgnbcts"]
 
 [ext_resource type="Script" path="res://BowlingSimulator/scripts/UI.gd" id="1_5lwhf"]
 [ext_resource type="Theme" uid="uid://djjf12tt1he3h" path="res://BowlingSimulator/materials/button_theme.tres" id="2_hfvjw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13rn2"]
+bg_color = Color(0.639216, 0.254902, 0.823529, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogxql"]
+bg_color = Color(0.192157, 0.862745, 0.843137, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_tgvj4"]
 resource_name = "EndRound"
@@ -415,11 +431,37 @@ bg_color = Color(0.639216, 0.254902, 0.823529, 1)
 [node name="UiCanvas" type="CanvasLayer"]
 script = ExtResource("1_5lwhf")
 
-[node name="Score" type="Label" parent="."]
-offset_left = 33.0
-offset_top = 23.0
-offset_right = 134.0
-offset_bottom = 97.0
+[node name="GameScoreHolder" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.031
+anchor_right = 0.126
+anchor_bottom = 0.176
+offset_left = 0.287998
+offset_top = -0.0880013
+offset_right = -0.152008
+offset_bottom = -0.0480118
+
+[node name="BGColor" type="Panel" parent="GameScoreHolder"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_13rn2")
+
+[node name="FGColor" type="Panel" parent="GameScoreHolder/BGColor"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -2.0
+offset_right = 98.0
+offset_bottom = 81.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogxql")
+
+[node name="Score" type="Label" parent="GameScoreHolder/BGColor/FGColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hfvjw")
 theme_override_font_sizes/font_size = 36
 text = "0"
 horizontal_alignment = 1

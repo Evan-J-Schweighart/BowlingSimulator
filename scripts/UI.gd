@@ -15,7 +15,7 @@ var inRoundEnd = false
 
 var rounds
 
-@onready var scoreLabel = $Score
+@onready var scoreLabel = $GameScoreHolder/BGColor/FGColor/Score
 @onready var anim = $AnimationPlayer
 @onready var scoreCard = $PanelMid/ScoreCard/PanelContainer/HBoxContainer
 @onready var endRoundUI = $EndRoundUI
