@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnah8nm3o0405"]
 
 [ext_resource type="Theme" uid="uid://djjf12tt1he3h" path="res://BowlingSimulator/materials/button_theme.tres" id="1_4xub7"]
-[ext_resource type="Script" path="res://BowlingSimulator/scenes/MainMenu.gd" id="1_xu8vk"]
+[ext_resource type="Script" path="res://BowlingSimulator/scripts/MainMenu.gd" id="1_xu8vk"]
 
 [node name="MainMenu" type="Node3D"]
 
