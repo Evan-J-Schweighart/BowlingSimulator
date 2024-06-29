@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b08x587vdymsa"]
+[gd_scene load_steps=8 format=3 uid="uid://bpksmeg5u6vix"]
 
 [ext_resource type="Script" path="res://scenes/test_scene_for_physics.gd" id="1_vggb6"]
 [ext_resource type="Texture2D" uid="uid://bsb2cnxhy6g4m" path="res://player/5gum.jpg" id="2_m1p15"]
@@ -33,19 +33,32 @@ omni_range = 2109.15
 transform = Transform3D(73.247, 0, 0, 0, 2.55831, 0, 0, 0, 83.3173, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/Floor"]
-transform = Transform3D(5.23802, 4.9914e-09, -3.15406e-11, 5.0619e-05, 2.5556e-06, 1.09101, 0, -3.78973, -4.76893e-08, 0.0177894, -4.08909e-09, 0)
+transform = Transform3D(27.7514, 4.61613e-08, -2.02734e-10, 0.000268183, 2.36346e-05, 7.01269, 0, -35.0481, -3.06533e-07, 0.0177894, -4.08909e-09, 0)
 mesh = SubResource("BoxMesh_ke83q")
 surface_material_override/0 = SubResource("StandardMaterial3D_tqs3p")
 
 [node name="floor" type="StaticBody3D" parent="WorldEnvironment/Floor/MeshInstance3D"]
-transform = Transform3D(1, 0, -1.30698e-19, 0, 1, 0, 0, -5.68434e-14, 1, -1.07381e-05, -0.000217065, -22.3595)
+transform = Transform3D(1, -1.11022e-16, 7.22144e-19, 0, 1, -8.88178e-16, 0, 0, 1, -1.07381e-05, -0.000217065, -22.3595)
 metadata/bouncesUs = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Floor/MeshInstance3D/floor"]
-transform = Transform3D(1, -1.58325e-08, -3.00133e-11, 1.39698e-09, 0.999999, 0, 0.0001367, -3.8147e-06, 1, 0.0118226, -0.000266159, 23.3487)
+transform = Transform3D(1, -8.7551e-10, -0.000136701, 1.39698e-09, 1, 3.8147e-06, 0.000136701, -3.8147e-06, 1, 0.0118226, -0.0102759, 22.3683)
+shape = SubResource("BoxShape3D_2abr3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldEnvironment/Floor"]
+transform = Transform3D(0.0658662, -3.26842e-11, -1.06613e-17, 0, -2.19231e-07, 37.4271, -4.29233e-13, -5.01541, -1.63599e-06, -0.908075, 3.31954, -0.00840433)
+mesh = SubResource("BoxMesh_ke83q")
+surface_material_override/0 = SubResource("StandardMaterial3D_tqs3p")
+
+[node name="floor" type="StaticBody3D" parent="WorldEnvironment/Floor/MeshInstance3D2"]
+transform = Transform3D(1, 0, 1.51718e-19, 0, 1, -8.88178e-16, 0, 0, 1, -1.07381e-05, -0.000217065, -22.3595)
+metadata/bouncesUs = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Floor/MeshInstance3D2/floor"]
+transform = Transform3D(1.27028, -9.11519e-10, -0.000142237, 1.77456e-09, 1.04113, 3.96923e-06, 0.000173648, -3.9716e-06, 1.04051, -0.058075, 4.1244e-05, 22.3352)
 shape = SubResource("BoxShape3D_2abr3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.0314383, 0.257931, 0.965652, -0.879673, -0.465834, 0.0957876, 0.47454, -0.846446, 0.24154, 2887.57, 1377.65, 492.868)
+transform = Transform3D(-0.0314383, 0.257931, 0.965652, -0.879672, -0.465834, 0.0957877, 0.47454, -0.846446, 0.24154, 2887.57, 1377.65, 492.868)
 light_energy = 2.734
 light_angular_distance = 90.0

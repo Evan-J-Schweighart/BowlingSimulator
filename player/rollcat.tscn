@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bwyu5ah8ve18d" path="res://player/sphere2.glb" id="2_xy67k"]
 [ext_resource type="Script" path="res://player/bounceTimer.gd" id="3_yi8sr"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gv1wk"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bpcr6"]
+height = 1.0
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_tynht"]
 
@@ -14,7 +15,7 @@ script = ExtResource("1_ptjxm")
 
 [node name="CollisionCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.12369, 0, 0, 0, 2.12369, 0, 0, 0, 2.12369, 0, 0, 0)
-shape = SubResource("SphereShape3D_gv1wk")
+shape = SubResource("CylinderShape3D_bpcr6")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 
@@ -42,5 +43,11 @@ transform = Transform3D(1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 
 [node name="bounceTimer" type="Timer" parent="."]
 process_callback = 0
 script = ExtResource("3_yi8sr")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137786, 1.52902, -0.0177043)
+target_position = Vector3(0, -5, 0)
+hit_from_inside = true
+collide_with_areas = true
 
 [connection signal="timeout" from="bounceTimer" to="." method="_on_bounce_timer_timeout"]
